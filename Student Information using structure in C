@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+//Data types for information
+struct studentInfo
+{
+	int studentNumber;
+	char studentFname[15];
+	char studentLname[15];
+	char studentCourse[15];
+	int studentYear;
+	char studentSection[1];
+};
+void print(struct studentInfo *s, int record);
+
+int main()
+{
+	int i, record;
+	char studentName[15];
+	
+	//Ask how many student will the user will input
+	printf ("How many student record(s) do you want?: ");
+	scanf ("%d", &record);
+	
+	struct studentInfo student[record];
+	
+	//Getting information
+	for (i = 0; i < record; i++)
+	{
+		printf ("==================================================\n");
+		printf ("Enter your student number: ");
+		scanf ("%d", &student[i].studentNumber);
+		printf ("Enter your first name: ");
+		scanf ("%s", &student[i].studentFname);
+		printf ("Enter your last name: ");
+		scanf ("%s", &student[i].studentLname);
+		printf ("Enter your course (e.g. BSIT): ");
+		scanf ("%s", &student[i].studentCourse);
+		printf ("Enter your year (1,2,3,4): ");
+		scanf ("%d", &student[i].studentYear);
+		printf ("Enter your section (A,B): ");
+		scanf ("%s", &student[i].studentSection);
+	}
+	print(student, record);
+}
+
+void print(struct studentInfo *s, int record)
+{
+	int i;
+	
+	//Displaying information
+	for (i = 0; i < record; i++)
+	{
+		printf ("===============Student Information===============\n");
+		printf ("Student Number: %d\n", s->studentNumber);
+		printf ("Student Name: %s %s\n", s->studentFname, s->studentLname);
+		printf ("Course: %s\n", s->studentCourse);
+		printf ("Year: %d\n", s->studentYear);
+		printf ("Section: %s\n", s->studentSection);
+		s++;
+	}
+}
